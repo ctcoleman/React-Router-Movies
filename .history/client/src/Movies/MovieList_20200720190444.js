@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieList = props => {
   console.log(props)
-  return (
+  return (null
     <div className="movie-list">
       {props.movies.map(movie => (
         <MovieDetails key={movie.id} movie={movie} />

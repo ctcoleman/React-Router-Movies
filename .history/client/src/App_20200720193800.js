@@ -21,6 +21,8 @@ const App = () => {
         });
     }
     getMovies();
+    <Route path='/'  component={MovieList(movieList)} />
+    <Route path='/movies/{id}' component={Movie(movieList)} />
   }, []);
   console.log(movieList)
   const addToSavedList = id => {
@@ -30,10 +32,6 @@ const App = () => {
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-      <div>
-        <Route path='/'  component={MovieList(movieList)} />
-        <Route path='/movies/{id}' component={Movie(movieList)} />
-      </div>
     </div>
   );
 };

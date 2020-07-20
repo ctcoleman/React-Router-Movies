@@ -15,6 +15,13 @@ const App = () => {
         .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovieList(response.data);
+          console.log(movieList)
+          return(
+            <div>
+              <Route path='/'  component={MovieList(movieList)} />
+              <Route path='/movies/{id}' component={Movie(movieList)} />
+            </div>
+          )
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -22,7 +29,6 @@ const App = () => {
     }
     getMovies();
   }, []);
-  console.log(movieList)
   const addToSavedList = id => {
     // This is stretch. Prevent the same movie from being "saved" more than once
   };
@@ -30,10 +36,6 @@ const App = () => {
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-      <div>
-        <Route path='/'  component={MovieList(movieList)} />
-        <Route path='/movies/{id}' component={Movie(movieList)} />
-      </div>
     </div>
   );
 };

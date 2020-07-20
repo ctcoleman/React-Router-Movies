@@ -33,6 +33,7 @@ const App = () => {
       <div>
         <Route path='/'  component={MovieList(movieList)} />
         <Route path='/movies/{id}' component={Movie(movieList)} />
+
       </div>
     </div>
   );

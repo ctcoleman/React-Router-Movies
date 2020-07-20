@@ -15,12 +15,15 @@ const App = () => {
         .get('http://localhost:5000/api/movies')
         .then(response => {
           setMovieList(response.data);
+          return
         })
         .catch(error => {
           console.error('Server Error', error);
         });
     }
     getMovies();
+    <Route path='/'  component={MovieList(movieList)} />
+    <Route path='/movies/{id}' component={Movie(movieList)} />
   }, []);
   console.log(movieList)
   const addToSavedList = id => {
@@ -30,10 +33,6 @@ const App = () => {
   return (
     <div>
       <SavedList list={[ /* This is stretch */]} />
-      <div>
-        <Route path='/'  component={MovieList(movieList)} />
-        <Route path='/movies/{id}' component={Movie(movieList)} />
-      </div>
     </div>
   );
 };
